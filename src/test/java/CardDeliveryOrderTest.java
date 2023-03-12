@@ -46,10 +46,10 @@ public class CardDeliveryOrderTest {
         int setDay =calWithSetDate.get(Calendar.DAY_OF_MONTH);      //выбранный день
 
 
-        open("http://localhost:9999/");                                 //открытие страницы
-        $x("//*[@data-test-id = 'city']//input").setValue("Са");            //ввод в поле город "Са"
-        $x("//span[text() = 'Санкт-Петербург']").click();                   //выбор из всплывающего списка 'Санкт-Петербург'
-        $x("//*[@data-test-id = 'date']//button").click();                  //клик по календарю
+        open("http://localhost:9999/");
+        $x("//*[@data-test-id = 'city']//input").setValue("Са");
+        $x("//span[text() = 'Санкт-Петербург']").click();
+        $x("//*[@data-test-id = 'date']//button").click();
         if(currentMonth < setMonth ){
             $x("//div[@data-step = '1']").click();           // выбор даты с перелистыванием месяца
             $x("//td[text() = '" + setDay +"']").click();
@@ -57,12 +57,12 @@ public class CardDeliveryOrderTest {
             $x("//td[text() = '" + setDay +"']").click();    // выбор даты без перелистывания месяца
         }
 
-        $x("//*[@data-test-id = 'name']//input").setValue("Поттер Гарри");   //ввод в поле фамилия и имя
-        $x("//*[@data-test-id = 'phone']//input").setValue("+78005553535");  //ввод в поле телефон
-        $x("//*[@data-test-id = 'agreement']").click();                      //клик на согласие с обработкой данных
-        $x("//*[text() = 'Забронировать']").click();                         //клик на кнопку "Забронировать"
+        $x("//*[@data-test-id = 'name']//input").setValue("Поттер Гарри");
+        $x("//*[@data-test-id = 'phone']//input").setValue("+78005553535");
+        $x("//*[@data-test-id = 'agreement']").click();
+        $x("//*[text() = 'Забронировать']").click();
 
-        $x("//*[@data-test-id = 'notification']").shouldBe(Condition.visible, Duration.ofSeconds(15));  //ожидание подтверждения
+        $x("//*[@data-test-id = 'notification']").shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 
 
